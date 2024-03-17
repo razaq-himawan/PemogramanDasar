@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:KalkulatorSederhana.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="678" d:DesignHeight="450"
+        x:Class="KalkulatorSederhana.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="KalkulatorSederhana">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <StackPanel>
+        <Border 
+            Padding="5"
+            Margin="5"
+            Background="SaddleBrown"
+            CornerRadius="10">
+                <TextBlock
+                    Foreground="White"
+                    FontSize="20"
+                    HorizontalAlignment="Center">
+                        Kalkulator Sederhana
+                </TextBlock>
+        </Border>
+        <Grid
+            ShowGridLines="False"
+            ColumnDefinitions="*,*"
+            RowDefinitions="Auto">
+            <Grid
+                ShowGridLines="False"
+                Margin="5"
+                ColumnDefinitions="100, 120"
+                RowDefinitions="Auto, Auto, Auto, Auto">
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10">
+                        Angka 1:
+                </Label>
+                <TextBox 
+                    Name="angka1"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="0 5"
+                    Text="0"
+                />
+                <Label  Grid.Row="1" Grid.Column="0" Margin="10">Angka 2:</Label>
+                <TextBox Name="angka2" Grid.Row="1" Grid.Column="1" Margin="0 5" Text="0"/>
+
+                <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Margin="0 10"
+                >
+                    <Button Grid.Row="2" Grid.Column="1" Width="30" HorizontalContentAlignment="Center" Click="ButtonAdd_Click">+</Button>
+                    <Button Grid.Row="2" Grid.Column="1" Width="30" HorizontalContentAlignment="Center" Margin="10 0 10 0" Click="ButtonSub_Click">-</Button>
+                    <Button Grid.Row="2" Grid.Column="1" Width="30" HorizontalContentAlignment="Center" Margin="0 0 10 0" Click="ButtonMulti_Click">*</Button>
+                    <Button Grid.Row="2" Grid.Column="1" Width="30" HorizontalContentAlignment="Center" Click="ButtonDiv_Click">/</Button>
+                </StackPanel>
+
+                <Label Grid.Row="3" Grid.Column="0" Margin="10">Hasil:</Label>
+                <TextBox Name="hasil" Grid.Row="3" Grid.Column="1" Margin="0 5" Text="0" IsReadOnly="True"/>
+            </Grid>
+
+            <Grid
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="10"
+                ShowGridLines="False"
+                ColumnDefinitions="Auto, 120"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+                    <Label Grid.Row="0" Grid.Column="0" Margin="10">Panjang:</Label>
+                    <TextBox Name="panjang" Grid.Row="0" Grid.Column="1" Margin="0 5" Text="0"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Margin="10">Lebar:</Label>
+                    <TextBox Name="lebar" Grid.Row="1" Grid.Column="1" Margin="0 5" Text="0"/>
+
+                    <Button Grid.Row="2" Grid.Column="1" HorizontalContentAlignment="Center" Click="ButtonCalc_Click">Hitung</Button>
+
+                    <Label Grid.Row="3" Grid.Column="0" Margin="10">Hasil Panjang:</Label>
+                    <TextBox Name="hasilpanjang" Grid.Row="3" Grid.Column="1" Margin="0 5" Text="0"/>
+                    <Label Grid.Row="4" Grid.Column="0" Margin="10">Hasil Lebar:</Label>
+                    <TextBox Name="hasillebar" Grid.Row="4" Grid.Column="1" Margin="0 5" Text="0"/>
+            </Grid>
+        </Grid>
+    </StackPanel>
+
+</Window>
