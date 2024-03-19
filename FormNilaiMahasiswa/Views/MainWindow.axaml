@@ -1,0 +1,96 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:FormNilaiMahasiswa.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="678" d:DesignHeight="450"
+        x:Class="FormNilaiMahasiswa.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="FormNilaiMahasiswa">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <Grid 
+      ColumnDefinitions="* *"
+      RowDefinitions="Auto Auto Auto Auto">
+        <Grid 
+          ColumnDefinitions="100 *"
+          RowDefinitions="Auto Auto Auto"
+          Margin="10">
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Nama:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="0 5" />
+
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">NPM:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 5" />
+
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Gender:</Label>
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" Margin="0 5">
+              <RadioButton GroupName="Gender" Content="Pria" />
+              <RadioButton GroupName="Gender" Content="Wanita" Margin="10 0"/>
+            </StackPanel>
+        </Grid>
+        <Grid   
+          Grid.Row="0"
+          Grid.Column="1"
+          ColumnDefinitions="Auto *"
+          RowDefinitions="Auto Auto Auto Auto"
+          Margin="10">
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Kode Jurusan:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="10 5" Name="tbKodeJurusan" KeyUp="TextBoxJurusan_KeyUp" />
+            <StackPanel Grid.Row="1" Grid.Column="2" Margin="10 5" Spacing="5">
+              <ComboBox SelectedIndex="0" MaxDropDownHeight="100" Name="cbKodeJurusan" SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem>--Pilih Kode Jurusan--</ComboBoxItem>
+                <ComboBoxItem>MIF</ComboBoxItem>
+                <ComboBoxItem>AKE</ComboBoxItem>
+                <ComboBoxItem>IRM</ComboBoxItem>
+              </ComboBox>
+            </StackPanel>
+  
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Nama Jurusan:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="10 5" Name="tbJurusan" IsReadOnly="True" />
+
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Kelas:</Label>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="10 5" />
+        </Grid>
+
+        <Separator Grid.Row="1" Grid.ColumnSpan="2" Background="Gray"  Height="10"/>
+
+        <Grid 
+          Grid.Row="2"
+          Grid.Column="0"
+          ColumnDefinitions="Auto *"
+          RowDefinitions="Auto Auto Auto Auto"
+          Margin="10">
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Nilai Apresiasi dan Kehadiran:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="5" Name="nilaiAK" Text="0"/>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Nilai Tugas dan Quiz:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Name="nilaiTQ" Text="0" />
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Nilai Ujian Tengah Semester:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Name="nilaiUTS" Text="0" />
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Nilai Ujian Akhir Semester:</Label>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="nilaiUAS" Text="0" />
+        </Grid>
+        <Grid 
+          Grid.Row="2"
+          Grid.Column="1"
+          ColumnDefinitions="100 150"
+          RowDefinitions="Auto Auto Auto"
+          Margin="10"
+          VerticalAlignment="Center">
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Nilai Angka:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="10" IsReadOnly="True" Name="nilaiAngka" Text="0"/>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Nilai Huruf:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="10" IsReadOnly="True" Name="nilaiHuruf" Text=""/>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Keterangan:</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Margin="10" IsReadOnly="True" Name="nilaiKet" Text=""/>
+        </Grid>
+        
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Padding="20 10" Name="hitung" Click="Button_Click">Hitung</Button>
+    </Grid>
+
+</Window>
