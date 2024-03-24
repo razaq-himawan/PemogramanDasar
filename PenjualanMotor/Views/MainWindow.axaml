@@ -1,0 +1,57 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PenjualanMotor.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="500"
+        x:Class="PenjualanMotor.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="PenjualanMotor">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+
+    <StackPanel>
+        <Grid ColumnDefinitions="Auto *" RowDefinitions="Auto Auto Auto Auto Auto Auto Auto Auto Auto Auto" Margin="10" >
+
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Nama Pemohon:</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Margin="10 5" />
+
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Nomor Telepon:</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="10 5" />
+
+            <Separator Grid.Row="2" Grid.ColumnSpan="2" Height="10" Margin="10" />
+
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">Kode Motor:</Label>
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="10 5" Name="tbKodeMotor" KeyUp="TextBoxKodeMotor_KeyUp" />
+
+            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">Nama Motor:</Label>
+            <TextBox Grid.Row="4" Grid.Column="1" Margin="10 5" Name="tbNamaMotor" IsReadOnly="True" />
+
+            <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">Harga Motor:</Label>
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="10 5" Name="tbHargaMotor" IsReadOnly="True"/>
+
+            <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center">Jumlah Beli:</Label>
+            <TextBox Grid.Row="6" Grid.Column="1" Margin="10 5" Name="tbJumlahBeli"/>
+
+            <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center">Bonus:</Label>
+            <TextBox Grid.Row="7" Grid.Column="1" Margin="10 5" Name="tbBonus" IsReadOnly="True"/>
+
+            <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center">Diskon 5%:</Label>
+            <TextBox Grid.Row="8" Grid.Column="1" Margin="10 5" Name="tbDiskon5Persen" IsReadOnly="True" />
+
+            <Label Grid.Row="9" Grid.Column="0" VerticalAlignment="Center">Total Bayar:</Label>
+            <TextBox Grid.Row="9" Grid.Column="1" Margin="10 5" Name="tbTotalBayar" IsReadOnly="True" />
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+            <Button Width="80" HorizontalContentAlignment="Center" Name="btnHitung" Click="ButtonHitung_Click">Hitung</Button>
+            <Button Width="80" HorizontalContentAlignment="Center" Margin="5 0" Name="btnClear" Click="ButtonClear_Click">Clear</Button>
+            <Button Width="80" HorizontalContentAlignment="Center" Name="btnExit" Click="ButtonExit_Click">Exit</Button>
+        </StackPanel>
+    </StackPanel>
+
+</Window>
